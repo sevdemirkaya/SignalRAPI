@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using SignalR.BussinessLayer.Abstract;
 
 namespace SignalRAPI.Controllers
@@ -10,10 +11,10 @@ namespace SignalRAPI.Controllers
         private readonly ICategoryService categoryService;
         private readonly IMapper mapper;
 
-        public CategoryController (ICategoryService categoryService, IMapper mapper)
+        public CategoryController (ICategoryService _categoryService, IMapper _mapper)
         {
-            var value = mapper.Map(categoryService);
-
+            mapper = _mapper;
+            categoryService = _categoryService;
         }
     }
 }
